@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            font-size: 10px;
+            text-decoration: none;
+        }
+        #road{
+            position: absolute;
+            font-size:40px;
+            visibility: ;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="road1"><a href="/myWeb/road1.html">桂林路</a></div>-->
+<!--<div id="road2"><a href="/myWeb/road2.html">桃子湖路</a></div>-->
+<!--<div id="road3"><a href="/myWeb/road3.html">桂林路</a></div>-->
+<div id="WebGL">
+    <div id="road">桃子湖路</div>
+</div>
+<script>
+    let road = document.getElementById("road");
+    let button = document.createElement('button');
+    button.innerHTML = "<a href='/myWeb/road1.html'>显示3d道路</a>";
+    button.style.position = 'absolute';
+    button.style.top = '10px';
+    button.style.visibility = "hidden";
+    road.onmouseenter = function (ev) {
+      button.style.visibility = "visible";
+    };
+    road.onmouseleave = function (ev) {
+        button.style.visibility = "hidden";
+    };
+    road.appendChild(button);
+</script>
+</body>
+</html>

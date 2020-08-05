@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic skeleton</title>
+    <style>
+        body{
+            margin:0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<script src="./lib/js/mac.js"></script>
+<script src="./lib/js/three.js"></script>
+<script src="./lib/js/ColladaLoader.js"></script>
+<script src="./lib/js/Stats.js"></script>
+<script src="./lib/js/TrackballControls.js"></script>
+<script src="./lib/js/OBJLoader.js"></script>
+<script src="./lib/js/MTLLoader.js"></script>
+<body>
+<div id="WebGL"></div>
+<script>
+    let camera = initCamera(new THREE.Vector3(50, 50, 50));
+    let loaderScene = new BaseLoaderScene(camera,true);
+    camera.lookAt(new THREE.Vector3(0, 15, 0));
+
+    let mtlLoader = new THREE.MTLLoader();
+    mtlLoader.load("./lib/model/road/road.mtl",function (material) {
+        material.preload();
+
+        let objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials(material);
+        objLoader.load("./lib/model/road/road.obj",function (object) {
+            loaderScene.render(object,camera);
+        })
+    })
+
+</script>
+</body>
+</html>
